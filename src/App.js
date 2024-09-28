@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './global/theme';
 
 function App() {
- 
+  console.log("test")
   return (
     <>
    

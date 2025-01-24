@@ -143,6 +143,10 @@ S.Kakao = styled.button`
         width: 22px;
         height: 22px
     }
+    & a {
+        text-decoration: none;
+        color: inherit;
+    }
 `
 S.Naver = styled.button`
     display: flex;
@@ -168,6 +172,10 @@ S.Naver = styled.button`
         width: 14px;
         height: 14px;
         margin: 4px;
+    }
+    & a {
+        text-decoration: none;
+        color: inherit;
     }
 `
 S.Google = styled.button`
@@ -195,7 +203,12 @@ S.Google = styled.button`
     & img {
             width: 20px;
             height: 20px;
-        }    
+    }
+    & a {
+        text-decoration: none;
+        color: inherit;
+    } 
+           
 `
 S.ConfirmMessage = styled.div`
     position: relative;

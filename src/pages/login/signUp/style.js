@@ -8,6 +8,9 @@ S.Form = styled.form`
     width: 100%;
     height: 100%;
 `
+S.SnsWrapper = styled.div`
+
+`
 S.Wrapper = styled.div`
     position: absolute;
     width: 380px;
@@ -59,6 +62,10 @@ S.DividerFont = styled.div`
 S.Button = styled.div`
     display: flex;
     flex-direction: column;
+    & a {
+        text-decoration: none;
+        color: inherit;
+    } 
 `
 S.Kakao = styled.button`
     display: flex;
@@ -83,6 +90,10 @@ S.Kakao = styled.button`
     & img {
         width: 22px;
         height: 22px
+    }
+    & a {
+        text-decoration: none;
+        color: inherit;
     }
 `
 S.Naver = styled.button`
@@ -110,6 +121,10 @@ S.Naver = styled.button`
         height: 14px;
         margin: 4px;
     }
+    & a {
+        text-decoration: none;
+        color: inherit;
+    }
 `
 S.Google = styled.button`
     display: flex;
@@ -136,7 +151,8 @@ S.Google = styled.button`
     & img {
             width: 20px;
             height: 20px;
-        }    
+    }
+      
 `
 S.EmailDivider = styled.div`
     width: 360px;

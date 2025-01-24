@@ -115,17 +115,17 @@ const Login = () => {
                         </div>
                         <S.Kakao>
                             <div>
-                                <img src={kakao} />카카오로 시작하기
+                            <img src={kakao} /><a href='http://localhost:8000/auth/kakao'>카카오로 시작하기</a>
                             </div>
                         </S.Kakao>
                         <S.Naver>
                             <div>
-                                <img src={naver} />네이버로 시작하기 
+                            <img src={naver} /><a href='http://localhost:8000/auth/naver'>네이버로 시작하기 </a>
                             </div>
                         </S.Naver>
                         <S.Google>
                             <div>
-                                <img src={google} />구글로 시작하기
+                            <img src={google} /><a href='http://localhost:8000/auth/google'>구글로 시작하기</a>
                             </div>
                         </S.Google>
                     </S.Button>

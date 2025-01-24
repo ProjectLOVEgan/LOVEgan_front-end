@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -27,6 +27,7 @@ import New from "./New";
 import S from "./style";
 
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const StyledSlider = styled(Slider)`
     width: 100%;
@@ -62,6 +63,29 @@ const Main = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PreArrow />,
   };
+
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.user.currentUser);
+  useEffect(()=>{
+    if(!currentUser?.email){
+      const getProfile = async () => {
+        const response = await fetch("http://localhost:8000/auth/profile", {
+          method : 'GET',
+          credentials : 'include'
+        })
+        console.log("메인페이지 슝");
+        if(!response.ok) return;
+        const datas = response.json();
+        return datas;
+      }
+
+      getProfile()
+        .then((res) => {
+          console.log(res)
+        })
+        .catch(console.error)
+    }
+  }, [currentUser, dispatch])
 
 
   // 각 카테고리별로 표시할 컴포넌트나 내용을 조건부로 렌더링

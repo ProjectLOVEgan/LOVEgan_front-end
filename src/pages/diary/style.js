@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 const S = {};
-
+S.Form = styled.form`
+    width: 100%;
+    height: 100%;
+`
 S.DiaryWrapper = styled.div`
     width: 1401px;
     margin: 70px 0px 100px;
@@ -90,7 +93,37 @@ S.Day = styled.div`
     background-color: ${({isCurrentMonth})=>(isCurrentMonth ? 'white' : '#FAFAFA')};
     padding: 0;
 `
-
+S.FoodStickerWrapper = styled.div`
+    position: relative; 
+    width: 100%;
+    margin-top: 45px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 27px;
+`
+S.Sticker = styled.div`
+    position: relative;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    border: 1px solid ${({theme})=>theme.PALLETTE.brand["primary"]};
+    background-color: ${({theme})=>theme.PALLETTE.brand["primary_light"]};
+    box-sizing: border-box;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: ${({theme})=>theme.PALLETTE.brand["primary"]};
+    opacity: ${({isFoodFilled}) => (isFoodFilled ? 1 : 0)};
+    &.dessert {
+        border: 1px solid ${({theme})=>theme.PALLETTE.sub["secondary"]};
+        background-color: ${({theme})=>theme.PALLETTE.sub["secondary_light"]};
+        color: ${({theme})=>theme.PALLETTE.sub["secondary"]};
+    }
+`
 S.DayNames = styled.div`
     font-size: 14px;
     width: 130px;
@@ -129,7 +162,8 @@ S.FoodBox = styled.div`
     display: flex;
     border: solid 1px ${({theme})=>theme.PALLETTE.grey["0"]};
     border-radius: 10px;
-    border-left: solid 10px ${({theme})=>theme.PALLETTE.grey["0"]};
+    border-left: solid 10px ${({isFoodFilled, theme}) => (isFoodFilled ? theme.PALLETTE.brand["primary_light"] : theme.PALLETTE.grey["0"])};
+    
     flex-direction: column;
     margin: 0 0 10px 12px;
 `
@@ -177,9 +211,9 @@ S.Kcal = styled.div`
     align-items: center;
     justify-content: end;
     font-size: ${({theme})=>theme.FONT_SIZE["paragraph"]};
-    font-weight: ${({theme})=>theme.FONT_WEIGHT["bold"]};
+    font-weight: ${({isFoodFilled, theme}) => (isFoodFilled ? theme.FONT_WEIGHT["bold"] : theme.FONT_WEIGHT["regular"])};
     margin: 11px 14px;
-    color: ${({theme})=>theme.PALLETTE.brand["primary"]};
+    color: ${({isFoodFilled, theme}) => (isFoodFilled ? theme.PALLETTE.brand["primary"] : theme.PALLETTE.brand["primary_black"])}
 `
 
 S.ModalBox = styled.div`
@@ -246,7 +280,7 @@ S.BodyTitle = styled.div`
     display: flex;
 `
 S.FoodCount = styled.div`
-    color: ${({theme})=>theme.PALLETTE.grey["8"]};
+    color: ${({isFoodFilled, theme}) => (isFoodFilled ? theme.PALLETTE.brand["primary"] : theme.PALLETTE.grey["8"] )}
 `
 S.ModalFooter = styled.div`
     display: flex;
@@ -382,5 +416,34 @@ S.ConfirmButton = styled.button`
     font-weight: ${({theme})=>theme.FONT_WEIGHT["medium"]};
     font-size: ${({theme})=>theme.FONT_SIZE["small"]};
 `
-
+S.ListWrapper = styled.li`
+    width: 100%;
+    height: 47px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 19px;
+    margin-top: 4px;
+    border-bottom: 1px solid ${({theme})=>theme.PALLETTE.grey["1"]};
+    box-sizing: border-box;
+    & img {
+        width: 15px;
+        height: 15px;
+    }
+`
+S.ListTextWrapper = styled.div`
+    width: 326px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+`
+S.FoodList = styled.div`
+    color: ${({theme})=>theme.PALLETTE.brand["primary_black"]};
+    font-size: ${({theme})=>theme.FONT_SIZE["paragraph"]};
+    font-weight: ${({theme})=>theme.FONT_WEIGHT["regular"]};
+`
+S.FoodKcal = styled.div`
+    color: ${({theme})=>theme.PALLETTE.brand["primary_black"]};
+    font-size: ${({theme})=>theme.FONT_SIZE["title"]};
+    font-weight: ${({theme})=>theme.FONT_WEIGHT["medium"]};
+`
 export default S;
